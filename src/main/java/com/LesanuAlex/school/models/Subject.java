@@ -25,4 +25,12 @@ public class Subject {
     private Long id;
 
     private String name;
+
+    private String difficulty;
+
+    private String period;
+
+    private String part;
+
+    private String colour;
 }

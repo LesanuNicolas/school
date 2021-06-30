@@ -38,4 +38,9 @@ public class SubjectController {
     public void deteleSubject(@PathVariable Long id) {
        subjectService.deleteSubject(id);
     }
+
+    @PostMapping("/upload")
+    public void saveSubjects() {
+        subjectService.saveSubjects();
+    }
 }

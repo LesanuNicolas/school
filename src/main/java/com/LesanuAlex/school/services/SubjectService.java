@@ -6,6 +6,9 @@ import com.LesanuAlex.school.repositories.SubjectRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.List;
 
 @Service
@@ -41,5 +44,24 @@ public class SubjectService {
 
     public void deleteSubject(Long id) {
         subjectRepository.deleteById(id);
+    }
+
+    String line = "";
+    public void saveSubjects() {
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("src/main/resources/Subjects.csv"));
+            while((line = br.readLine())!=null) {
+                String [] data = line.split(",");
+                Subject s = new Subject();
+                s.setName(data[0]);
+                s.setDifficulty(data[1]);
+                s.setPeriod(data[2]);
+                s.setPart(data[3]);
+                s.setColour(data[4]);
+                subjectRepository.save(s);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

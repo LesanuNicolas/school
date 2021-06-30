@@ -44,7 +44,6 @@ public class StudentService {
     }
 
     public void deleteStudent(Long id) {
-
         studentRepository.deleteById(id);
     }
 
